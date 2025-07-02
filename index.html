@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>游戏世界 - 精品游戏推荐</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap">
     <style>
         /* 全局样式 */
         * {
@@ -15,11 +16,12 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a3a 0%, #0c1620 100%);
+            background: linear-gradient(135deg, #0c1620 0%, #1a2a3a 100%);
             color: #e0e0e0;
             line-height: 1.6;
             background-attachment: fixed;
             background-size: cover;
+            overflow-x: hidden;
         }
         
         /* 导航栏 */
@@ -54,11 +56,14 @@
             -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
         
         .logo i {
             margin-right: 10px;
             font-size: 1.5rem;
+            animation: pulse 2s infinite;
         }
         
         .nav-links {
@@ -77,6 +82,7 @@
             transition: color 0.3s;
             font-weight: 500;
             padding: 5px 0;
+            font-size: 1.1rem;
         }
         
         .nav-links a:hover {
@@ -153,7 +159,7 @@
             background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             text-align: center;
@@ -181,14 +187,19 @@
         }
         
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             animation: fadeInDown 1s ease;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #3498db, #8e44ad, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .hero-content p {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 2.5rem;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease;
@@ -198,7 +209,7 @@
             display: inline-block;
             background: linear-gradient(90deg, #3498db, #2980b9);
             color: white;
-            padding: 0.9rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
             transition: all 0.3s;
@@ -207,11 +218,13 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
             animation: pulse 2s infinite;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
         }
         
         /* 分类筛选 */
@@ -220,6 +233,9 @@
             background: rgba(30, 40, 60, 0.7);
             backdrop-filter: blur(5px);
             margin-top: -1px;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
         }
         
         .filters-container {
@@ -230,7 +246,7 @@
         }
         
         .filter-btn {
-            padding: 0.6rem 1.5rem;
+            padding: 0.7rem 1.8rem;
             background: rgba(255, 255, 255, 0.1);
             color: #e0e0e0;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -238,12 +254,14 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
+            font-size: 1.05rem;
         }
         
         .filter-btn:hover, .filter-btn.active {
             background: linear-gradient(90deg, #3498db, #8e44ad);
             color: white;
             border-color: transparent;
+            transform: translateY(-3px);
         }
         
         /* 游戏展示区 */
@@ -261,6 +279,7 @@
             color: #3498db;
             margin-bottom: 1rem;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            font-family: 'Orbitron', sans-serif;
         }
         
         .section-title p {
@@ -285,10 +304,12 @@
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
         
         .game-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-15px) rotateX(5deg);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             border-color: rgba(52, 152, 219, 0.5);
         }
@@ -297,7 +318,6 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: linear-gradient(90deg, #e74c3c, #c0392b);
             color: white;
             padding: 5px 12px;
             border-radius: 20px;
@@ -305,6 +325,26 @@
             font-weight: bold;
             z-index: 2;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .badge-hot {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+        }
+        
+        .badge-new {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+        
+        .badge-recommend {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+        }
+        
+        .badge-discount {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+        
+        .badge-classic {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
         }
         
         .game-img {
@@ -521,6 +561,45 @@
             color: #e0e0e0;
         }
         
+        /* 新增：游戏统计 */
+        .stats-section {
+            background: rgba(25, 35, 55, 0.8);
+            padding: 60px 0;
+            margin: 50px 0;
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+        }
+        
         /* 响应式设计 */
         @media (max-width: 992px) {
             .hero-content h1 {
@@ -587,6 +666,12 @@
                 align-items: center;
                 gap: 30px;
             }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -604,6 +689,10 @@
             
             .dropdown-content {
                 min-width: 160px;
+            }
+            
+            .contact-item {
+                width: 100%;
             }
         }
         
@@ -633,12 +722,40 @@
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+                transform: scale(1);
             }
-            70% {
+            50% {
                 box-shadow: 0 0 0 15px rgba(52, 152, 219, 0);
+                transform: scale(1.05);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+                transform: scale(1);
+            }
+        }
+        
+        /* 新增：悬浮效果 */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* 新增：游戏卡片加载动画 */
+        .game-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardAppear 0.6s forwards;
+        }
+        
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -655,7 +772,7 @@
                     <li class="dropdown">
                         <a href="#about">关于我们</a>
                         <div class="dropdown-content">
-                            <p><i class="fab fa-weixin"></i> 公众号：手游推荐小玉</p>
+                            <p><i class="fab fa-weixin"></i> 公众号：手游推荐小玉Gameee</p>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -675,7 +792,7 @@
             <div class="hero-content">
                 <h1>探索精彩的游戏世界</h1>
                 <p>发现最新、最热门的游戏，找到属于你的游戏体验</p>
-                <a href="#games" class="btn">浏览游戏</a>
+                <a href="#games" class="btn floating">浏览游戏</a>
             </div>
         </div>
     </section>
@@ -684,12 +801,11 @@
     <div class="game-filters">
         <div class="container">
             <div class="filters-container">
-                <button class="filter-btn active">全部游戏</button>
-                <button class="filter-btn">角色扮演</button>
-                <button class="filter-btn">动作冒险</button>
-                <button class="filter-btn">策略竞技</button>
-                <button class="filter-btn">怀旧经典</button>
-                <button class="filter-btn">热门推荐</button>
+                <button class="filter-btn active" data-filter="all">全部游戏</button>
+                <button class="filter-btn" data-filter="hot">热门游戏</button>
+                <button class="filter-btn" data-filter="new">新游推荐</button>
+                <button class="filter-btn" data-filter="rpg">角色扮演</button>
+                <button class="filter-btn" data-filter="classic">怀旧经典</button>
             </div>
         </div>
     </div>
@@ -703,9 +819,8 @@
             </div>
             
             <div class="games-grid">
-                <!-- 游戏卡片保持不变 -->
-                <div class="game-card">
-                    <div class="game-badge">热门</div>
+                <div class="game-card" data-category="hot">
+                    <div class="game-badge badge-hot">热门</div>
                     <div class="game-img">
                         <img src="https://ffsyxz.cn/static/upload/image/20250509/1746759943511290.jpg" alt="飞飞重逢">
                     </div>
@@ -716,8 +831,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">新服</div>
+                <div class="game-card" data-category="new">
+                    <div class="game-badge badge-new">新服</div>
                     <div class="game-img">
                         <img src="https://cq3zz.lzghj.com/static/upload/image/20241217/1734434831683829.png" alt="传奇3至尊版">
                     </div>
@@ -728,20 +843,20 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">火爆</div>
+                <div class="game-card" data-category="hot">
+                    <div class="game-badge badge-hot">火爆</div>
                     <div class="game-img">
                         <img src="https://30575630.s21i.faiusr.com/2/33/ABUIABACGAAg4JrUswYo3oXOrwEwoAY4igM.jpg.webp" alt="热江-群攻服2.0">
                     </div>
                     <div class="game-info">
                         <h3>热江-群攻服2.0</h3>
-                        <p>《热血江湖手游：群攻2.0版》震撼来袭！ 极致优化群攻技能，畅享无双割草快感！经典正邪势力激斗，枪豪剑客再现江湖，轻功激战，爽快爆屏！</p>
+                        <p>《热江手游：群攻2.0版》震撼来袭！ 极致优化群攻技能，畅享无双割草快感！经典正邪势力激斗，枪豪剑客再现江湖，轻功激战，爽快爆屏！</p>
                         <a href="http://navo.top/vy2aYj" class="btn" target="_blank">下载链接</a>
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">热门</div>
+                <div class="game-card" data-category="rpg">
+                    <div class="game-badge badge-hot">热门</div>
                     <div class="game-img">
                         <img src="https://picx.zhimg.com/70/v2-1bf550f07b822203464e6b7fe0a7e3dc_1440w.avis?source=172ae18b&biz_tag=Post" alt="修仙家族模拟器2">
                     </div>
@@ -752,8 +867,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">推荐</div>
+                <div class="game-card" data-category="rpg">
+                    <div class="game-badge badge-recommend">推荐</div>
                     <div class="game-img">
                         <img src="https://www.paoios.com/uploadfile/202503/e3898921be4f09b.jpg" alt="奇迹世界 起源">
                     </div>
@@ -764,23 +879,10 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">折扣</div>
+                <div class="game-card" data-category="new">
+                    <div class="game-badge badge-new">新游</div>
                     <div class="game-img">
-                        <img src="https://static.dmyouxi.cn/images/2025/01/09/cdd553cbdff36d76ea7f9faa6b0f8440.jpg" alt="盟重英雄-美杜莎1折">
-                    </div>
-                    <div class="game-info">
-                        <h3>盟重英雄-美杜莎1折</h3>
-                        <p>传奇经典1折版！美杜莎专属地图开启，全服爆率翻倍，充值1折享顶V特权！沙城争霸千人同屏，重温玛法大陆热血岁月！</p>
-                        <a href="http://navo.top/jaEBva" class="btn" target="_blank">下载链接</a>
-                    </div>
-                </div>
-                
-                <!-- 新增游戏 -->
-                <div class="game-card">
-                    <div class="game-badge">新游</div>
-                    <div class="game-img">
-                        <img src="https://www.44sj.com/uploadfile/202505/072f73013f36b.jpg" alt="盟重英雄 点卡重置版">
+                        <img src="https://32311591.s21i.faiusr.com/95/12/ABUIABBfGAAg65GqtwYoqMH9xQcwywQ4owI.webp" alt="盟重英雄 点卡重置版">
                     </div>
                     <div class="game-info">
                         <h3>盟重英雄 点卡重置版</h3>
@@ -789,8 +891,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">热门</div>
+                <div class="game-card" data-category="hot">
+                    <div class="game-badge badge-hot">热门</div>
                     <div class="game-img">
                         <img src="https://qqsgsy.cn/static/upload/image/20250407/1744007760205984.png" alt="武圣神尊-千年3D版">
                     </div>
@@ -801,8 +903,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">推荐</div>
+                <div class="game-card" data-category="classic">
+                    <div class="game-badge badge-recommend">推荐</div>
                     <div class="game-img">
                         <img src="https://www.xcsygw.com/uploadfile/202503/4122a0b3c34c265.jpg" alt="热血传说-点卡赏金版">
                     </div>
@@ -813,8 +915,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">新服</div>
+                <div class="game-card" data-category="new">
+                    <div class="game-badge badge-new">新服</div>
                     <div class="game-img">
                         <img src="https://www.xcsygf.com/uploadfile/202410/bfd8a94b77c1e28.jpg" alt="星辰变：归来">
                     </div>
@@ -825,8 +927,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">纯净</div>
+                <div class="game-card" data-category="classic">
+                    <div class="game-badge badge-new">纯净</div>
                     <div class="game-img">
                         <img src="https://yz.ttlzlj.cn/static/upload/other/20250515/1747277646843756.jpeg" alt="义战龙城-3D纯净服">
                     </div>
@@ -837,8 +939,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">火爆</div>
+                <div class="game-card" data-category="hot">
+                    <div class="game-badge badge-hot">火爆</div>
                     <div class="game-img">
                         <img src="https://csws.hywan.com/public/csws/pc/img/banner2.jpg" alt="金装裁决-传世无双">
                     </div>
@@ -849,8 +951,8 @@
                     </div>
                 </div>
                 
-                <div class="game-card">
-                    <div class="game-badge">怀旧</div>
+                <div class="game-card" data-category="classic">
+                    <div class="game-badge badge-classic">怀旧</div>
                     <div class="game-img">
                         <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.Iz_97PuI9Z3ppKgyk0AiwQHaEB?w=298&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="屠龙决战沙城-传奇3光通">
                     </div>
@@ -860,18 +962,28 @@
                         <a href="http://navo.top/RvM7b2" class="btn" target="_blank">下载链接</a>
                     </div>
                 </div>
-                
-                <div class="game-card">
-                    <div class="game-badge">新服</div>
-                    <div class="game-img">
-                        <img src="https://q0.itc.cn/q_70/images01/20250215/448f76d654d048148b580e9b1df947a3.jpeg" alt="龙城秘境-法圣之怒">
-                    </div>
-                    <div class="game-info">
-                        <h3>龙城秘境-法圣之怒</h3>
-                        <p>全新法师觉醒版本！法圣职业全面加强，炫酷技能特效，秘境探索玩法升级。跨服组队挑战，争夺龙城宝藏！</p>
-                        <a href="http://navo.top/Brm6b2" class="btn" target="_blank">下载链接</a>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 新增：游戏统计 -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">846+</div>
+                <div class="stat-label">精品游戏</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">422万+</div>
+                <div class="stat-label">注册玩家</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">93%</div>
+                <div class="stat-label">用户满意度</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">每日更新</div>
+                <div class="stat-label">最新游戏</div>
             </div>
         </div>
     </section>
@@ -880,13 +992,13 @@
     <section id="contact">
         <div class="container">
             <div class="contact-section">
-                <div class="contact-item">
+                <div class="contact-item floating">
                     <h4><i class="fab fa-weixin"></i> 客服微信</h4>
                     <div class="contact-info">WFF9972</div>
                     <p>添加客服微信获取专属游戏礼包</p>
                 </div>
                 
-                <div class="contact-item">
+                <div class="contact-item floating" style="animation-delay: 0.5s;">
                     <h4><i class="fas fa-newspaper"></i> 关注公众号</h4>
                     <div class="contact-info">手游推荐小玉</div>
                     <p>关注公众号获取最新游戏资讯</p>
@@ -917,10 +1029,10 @@
                 <div class="footer-links">
                     <h4>游戏分类</h4>
                     <ul>
-                        <li><a href="#">角色扮演</a></li>
-                        <li><a href="#">动作冒险</a></li>
-                        <li><a href="#">策略竞技</a></li>
-                        <li><a href="#">怀旧经典</a></li>
+                        <li><a href="#" data-filter="all">全部游戏</a></li>
+                        <li><a href="#" data-filter="hot">热门游戏</a></li>
+                        <li><a href="#" data-filter="new">新游推荐</a></li>
+                        <li><a href="#" data-filter="classic">怀旧经典</a></li>
                     </ul>
                 </div>
                 
@@ -960,14 +1072,57 @@
                 // 为当前点击的按钮添加active类
                 this.classList.add('active');
                 
-                // 这里可以添加实际筛选逻辑
-                // 例如根据按钮的文本内容筛选游戏卡片
+                // 获取筛选类别
+                const filter = this.getAttribute('data-filter');
+                filterGames(filter);
             });
         });
         
+        // 页脚筛选功能
+        document.querySelectorAll('.footer-links a[data-filter]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filter = this.getAttribute('data-filter');
+                
+                // 更新筛选按钮状态
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if(btn.getAttribute('data-filter') === filter) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                filterGames(filter);
+                
+                // 滚动到游戏区域
+                document.querySelector('#games').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 筛选游戏函数
+        function filterGames(filter) {
+            const gameCards = document.querySelectorAll('.game-card');
+            
+            gameCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if(filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                    // 添加动画效果
+                    card.style.animation = 'cardAppear 0.6s forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
         // 游戏卡片悬停效果增强
         const gameCards = document.querySelectorAll('.game-card');
-        gameCards.forEach(card => {
+        gameCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            
             card.addEventListener('mouseenter', () => {
                 card.style.zIndex = '10';
             });
@@ -993,6 +1148,50 @@
                     });
                 }
             });
+        });
+        
+        // 游戏统计数字动画
+        const statsSection = document.querySelector('.stats-section');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(number => {
+                        const target = +number.innerText.replace(/[^0-9]/g, '');
+                        if (isNaN(target)) return;
+                        
+                        let count = 0;
+                        const duration = 2000; // 动画持续时间(ms)
+                        const increment = target / (duration / 16); // 每16ms增加的值
+                        
+                        const updateCount = () => {
+                            count += increment;
+                            if (count < target) {
+                                number.innerText = Math.ceil(count) + (number.innerText.includes('%') ? '%' : '+');
+                                setTimeout(updateCount, 16);
+                            } else {
+                                number.innerText = target + (number.innerText.includes('%') ? '%' : '+');
+                            }
+                        };
+                        
+                        updateCount();
+                    });
+                    
+                    // 停止观察，避免重复触发
+                    observer.unobserve(statsSection);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+        
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            document.querySelector('.hero-content').style.animation = 'fadeInDown 1s ease';
+            document.querySelector('.hero-content p').style.animation = 'fadeInUp 1s ease';
         });
     </script>
 </body>
